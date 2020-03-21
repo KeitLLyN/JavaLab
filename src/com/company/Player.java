@@ -14,7 +14,7 @@ public class Player {
     }
     public Player(boolean isBot, char mark){
         this.isBot = isBot;
-        this.mark = mark;
+        //this.mark = mark;
     }
     public int getMark(){
         return mark == 'X' ? 1:2;
