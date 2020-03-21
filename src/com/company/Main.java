@@ -15,17 +15,26 @@ import java.util.Arrays;
 public class Main {
     static BufferedReader reader;
 
-    public static void main(String[] args) throws IOException {
-        Game game = new Game(getPlayer('X',"First"),getPlayer('O', "Second"));
+    public static void main(String[] args) {
+        Game game;
+        try {
+            game = new Game(getPlayer('X',"First"),getPlayer('O', "Second"));
+        }catch (IOException | NumberFormatException ex){
+            System.out.println(ex.getMessage());
+            return;
+        }
         while (true) {
             switch(game.mainMenu()){
                 case 1:
                     game.start();
+                    break;
                 case 2:
                     Statistics.getStats();
+                    break;
                 case 3:
                     return;
-
+                default:
+                    break;
             }
         }
     }
