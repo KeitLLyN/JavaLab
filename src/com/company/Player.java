@@ -2,18 +2,15 @@ package com.company;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Random;
 
-public class Player {
-    private boolean isBot;
+
+public class Player implements IPlayer {
     private char mark;
 
     public Player() {
-        isBot = false;
         mark = 'X';
     }
-    public Player(boolean isBot, char mark){
-        this.isBot = isBot;
+    public Player(char mark){
         this.mark = mark;
     }
     public int getMark(){
@@ -21,7 +18,6 @@ public class Player {
     }
 
     public int getNumber(final int[] map){
-        if (this.isBot) return getNumberFromBot(map);
         System.out.print("Mark " + mark + " : ");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         while (true){
@@ -39,14 +35,4 @@ public class Player {
             }
         }
     }
-
-    private int getNumberFromBot(final int[] map){
-        int fieldNumber;
-        do{
-            Random random = new Random();
-            fieldNumber = random.nextInt(map.length);
-        }while (map[fieldNumber] != 0);
-        return fieldNumber;
-    }
-
 }
