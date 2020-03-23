@@ -32,16 +32,16 @@ public class Game {
 
     public void start(){
         while (isGame){
-            printMap();
-            isGame = stepAndCheck(firstPlayer);
-            countXStep++;
-
-            if (!isGame) break;
             if (isDraw()) {
                 printMap();
                 System.out.println("Draw");
-                break;
+                dataCleaning();
+                return;
             }
+            printMap();
+            isGame = stepAndCheck(firstPlayer);
+            countXStep++;
+            if (!isGame) break;
             printMap();
             isGame = stepAndCheck(secondPlayer);
             countYStep++;
@@ -50,6 +50,7 @@ public class Game {
         dataCleaning();
     }
     private void printMap(){
+        System.out.println("--------------");
         for (int i = 0; i < map.length; i++) {
             if (i % size == 0 && i != 0) System.out.println();
 
